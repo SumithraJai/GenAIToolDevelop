@@ -1,0 +1,204 @@
+1. Create a user story using chatgpt for prompt :
+prompt: Create a userstory for below scenario As a user I need to know my purchase limits of credit card for a month
+
+
+User Story: View Monthly Credit Card Purchase Limit
+
+Title: View Monthly Credit Card Purchase Limit
+
+As a credit card user,
+I want to view my monthly purchase limit,
+So that I can manage my spending and stay within my credit limit.
+
+Acceptance Criteria:
+
+Display Limit:
+The system shall display the total monthly purchase limit assigned to my credit card.
+
+Current Usage:
+The system shall show the amount already spent in the current billing cycle.
+
+Remaining Limit:
+The system shall calculate and display the remaining available limit for the month.
+
+Access Point:
+The purchase limit details shall be accessible from the credit card dashboard or statement section.
+
+Accuracy:
+The values shown must be accurate and updated in real-time based on transactions.
+
+Using same chatgpt aligned the userstory in a single line, prompt:Align the above lines in a single line using \n for giving as a request
+User Story: View Monthly Credit Card Purchase Limit\n\nTitle: View Monthly Credit Card Purchase Limit\n\nAs a credit card user,\nI want to view my monthly purchase limit,\nSo that I can manage my spending and stay within my credit limit.\n\nAcceptance Criteria:\n\nDisplay Limit:\nThe system shall display the total monthly purchase limit assigned to my credit card.\n\nCurrent Usage:\nThe system shall show the amount already spent in the current billing cycle.\n\nRemaining Limit:\nThe system shall calculate and display the remaining available limit for the month.\n\nAccess Point:\nThe purchase limit details shall be accessible from the credit card dashboard or statement section.\n\nAccuracy:\nThe values shown must be accurate and updated in real-time based on transactions.
+
+Request: https://api.groq.com/openai/v1/chat/completions
+{
+  "model": "llama-3.3-70b-versatile",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Generate Non functional test cases for the use case : Title:User Story: View Monthly Credit Card Purchase Limit\n\nTitle: View Monthly Credit Card Purchase Limit\n\nAs a credit card user,\nI want to view my monthly purchase limit,\nSo that I can manage my spending and stay within my credit limit.\n\nAcceptance Criteria:\n\nDisplay Limit:\nThe system shall display the total monthly purchase limit assigned to my credit card.\n\nCurrent Usage:\nThe system shall show the amount already spent in the current billing cycle.\n\nRemaining Limit:\nThe system shall calculate and display the remaining available limit for the month.\n\nAccess Point:\nThe purchase limit details shall be accessible from the credit card dashboard or statement section.\n\nAccuracy:\nThe values shown must be accurate and updated in real-time based on transactions."
+    },
+    {
+      "role": "system",
+      "content": "As an AI Assistant give me a selenium java code with TestNG"
+    }  ]
+}
+
+Response: 
+{
+    "id": "chatcmpl-68e66010-3ef0-4d37-a790-df1ab16dcb5c",
+    "object": "chat.completion",
+    "created": 1760770998,
+    "model": "llama-3.3-70b-versatile",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "**Non-Functional Test Cases for View Monthly Credit Card Purchase Limit**\n====================================================================\n\n### Performance Test Cases\n\n1. **Test Case: Load Time**\n\t* **Description:** Measure the page load time when accessing the credit card dashboard or statement section.\n\t* **Expected Result:** The page should load within 3 seconds.\n2. **Test Case: Response Time**\n\t* **Description:** Measure the response time when clicking on the \"View Purchase Limit\" button.\n\t* **Expected Result:** The response time should be less than 2 seconds.\n3. **Test Case: Concurrent Users**\n\t* **Description:** Measure the system's performance when multiple users (e.g., 100) access the credit card dashboard or statement section simultaneously.\n\t* **Expected Result:** The system should handle the concurrent users without significant degradation in performance.\n\n### Security Test Cases\n\n1. **Test Case: Authentication**\n\t* **Description:** Verify that only authenticated users can access the credit card dashboard or statement section.\n\t* **Expected Result:** The system should redirect unauthenticated users to the login page.\n2. **Test Case: Authorization**\n\t* **Description:** Verify that users can only access their own credit card purchase limit details.\n\t* **Expected Result:** The system should display an error message or redirect the user to the login page when trying to access another user's purchase limit details.\n3. **Test Case: Data Encryption**\n\t* **Description:** Verify that sensitive data (e.g., credit card numbers, purchase limit details) is encrypted when transmitted over the network.\n\t* **Expected Result:** The system should use HTTPS and encrypt sensitive data.\n\n### Usability Test Cases\n\n1. **Test Case: Intuitive Navigation**\n\t* **Description:** Verify that users can easily navigate to the credit card dashboard or statement section and find the \"View Purchase Limit\" button.\n\t* **Expected Result:** The navigation should be straightforward, and the button should be prominently displayed.\n2. **Test Case: Clear and Concise Information**\n\t* **Description:** Verify that the purchase limit details are clearly and concisely displayed.\n\t* **Expected Result:** The system should display the total monthly purchase limit, current usage, and remaining limit in a clear and easy-to-understand format.\n3. **Test Case: Error Handling**\n\t* **Description:** Verify that the system displays helpful error messages when encountering errors (e.g., network issues, database errors).\n\t* **Expected Result:** The system should display a clear and concise error message with instructions on how to resolve the issue.\n\n### Compatibility Test Cases\n\n1. **Test Case: Browser Compatibility**\n\t* **Description:** Verify that the credit card dashboard or statement section works correctly on different browsers (e.g., Chrome, Firefox, Safari).\n\t* **Expected Result:** The system should function as expected on all supported browsers.\n2. **Test Case: Device Compatibility**\n\t* **Description:** Verify that the credit card dashboard or statement section works correctly on different devices (e.g., desktop, laptop, mobile).\n\t* **Expected Result:** The system should function as expected on all supported devices.\n\n**Example Selenium Java Code with TestNG:**\n```java\nimport org.openqa.selenium.By;\nimport org.openqa.selenium.WebDriver;\nimport org.openqa.selenium.WebElement;\nimport org.openqa.selenium.chrome.ChromeDriver;\nimport org.testng.annotations.AfterClass;\nimport org.testng.annotations.BeforeClass;\nimport org.testng.annotations.Test;\n\npublic class PurchaseLimitTest {\n    private WebDriver driver;\n\n    @BeforeClass\n    public void setup() {\n        driver = new ChromeDriver();\n        driver.get(\"https://example.com/login\");\n    }\n\n    @AfterClass\n    public void teardown() {\n        driver.quit();\n    }\n\n    @Test\n    public void testViewPurchaseLimit() {\n        // Login to the application\n        driver.findElement(By.name(\"username\")).sendKeys(\"username\");\n        driver.findElement(By.name(\"password\")).sendKeys(\"password\");\n        driver.findElement(By.name(\"login\")).click();\n\n        // Navigate to the credit card dashboard\n        driver.findElement(By.linkText(\"Credit Card Dashboard\")).click();\n\n        // Click on the \"View Purchase Limit\" button\n        driver.findElement(By.xpath(\"//button[@id='view-purchase-limit']\")).click();\n\n        // Verify the purchase limit details are displayed\n        WebElement purchaseLimitElement = driver.findElement(By.xpath(\"//div[@id='purchase-limit']\"));\n        Assert.assertTrue(purchaseLimitElement.isDisplayed());\n\n        // Verify the total monthly purchase limit is displayed\n        String totalMonthlyPurchaseLimit = driver.findElement(By.xpath(\"//span[@id='total-monthly-purchase-limit']\")).getText();\n        Assert.assertNotNull(totalMonthlyPurchaseLimit);\n    }\n}\n```\nNote: This is just an example code and may require modifications to fit your specific use case."
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "queue_time": 0.048667637,
+        "prompt_tokens": 200,
+        "prompt_time": 0.017710643,
+        "completion_tokens": 969,
+        "completion_time": 1.940883788,
+        "total_tokens": 1169,
+        "total_time": 1.9585944309999999
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_155ab82e98",
+    "x_groq": {
+        "id": "req_01k7v22ejyejmrmjqqc7xghmz2"
+    },
+    "service_tier": "on_demand"
+}
+
+4. Converter the response into readable format from chatgpt. prompt: format the above content readable from response
+
+Non-Functional Test Cases for View Monthly Credit Card Purchase Limit
+✅ Performance Test Cases
+
+Test Case: Load Time
+
+Description: Measure the page load time when accessing the credit card dashboard or statement section.
+
+Expected Result: The page should load within 3 seconds.
+
+Test Case: Response Time
+
+Description: Measure the response time when clicking on the "View Purchase Limit" button.
+
+Expected Result: The response time should be less than 2 seconds.
+
+Test Case: Concurrent Users
+
+Description: Measure the system's performance when multiple users (e.g., 100) access the credit card dashboard or statement section simultaneously.
+
+Expected Result: The system should handle the concurrent users without significant degradation in performance.
+
+🔐 Security Test Cases
+
+Test Case: Authentication
+
+Description: Verify that only authenticated users can access the credit card dashboard or statement section.
+
+Expected Result: The system should redirect unauthenticated users to the login page.
+
+Test Case: Authorization
+
+Description: Verify that users can only access their own credit card purchase limit details.
+
+Expected Result: The system should display an error message or redirect the user when attempting to access another user's purchase limit.
+
+Test Case: Data Encryption
+
+Description: Verify that sensitive data (e.g., credit card numbers, purchase limit details) is encrypted when transmitted over the network.
+
+Expected Result: The system should use HTTPS and encrypt sensitive data.
+
+🎯 Usability Test Cases
+
+Test Case: Intuitive Navigation
+
+Description: Verify that users can easily navigate to the credit card dashboard or statement section and find the "View Purchase Limit" button.
+
+Expected Result: The navigation should be straightforward, and the button should be prominently displayed.
+
+Test Case: Clear and Concise Information
+
+Description: Verify that the purchase limit details are clearly and concisely displayed.
+
+Expected Result: The system should display the total monthly purchase limit, current usage, and remaining limit in a clear format.
+
+Test Case: Error Handling
+
+Description: Verify that the system displays helpful error messages when encountering errors (e.g., network issues, database errors).
+
+Expected Result: The system should display clear and actionable error messages.
+
+🌐 Compatibility Test Cases
+
+Test Case: Browser Compatibility
+
+Description: Verify that the credit card dashboard or statement section works correctly on different browsers (e.g., Chrome, Firefox, Safari).
+
+Expected Result: The system should function as expected on all supported browsers.
+
+Test Case: Device Compatibility
+
+Description: Verify that the credit card dashboard or statement section works correctly on different devices (e.g., desktop, laptop, mobile).
+
+Expected Result: The system should function as expected on all supported devices.
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class PurchaseLimitTest {
+    private WebDriver driver;
+
+    @BeforeClass
+    public void setup() {
+        driver = new ChromeDriver();
+        driver.get("https://example.com/login");
+    }
+
+    @AfterClass
+    public void teardown() {
+        driver.quit();
+    }
+
+    @Test
+    public void testViewPurchaseLimit() {
+        // Login to the application
+        driver.findElement(By.name("username")).sendKeys("username");
+        driver.findElement(By.name("password")).sendKeys("password");
+        driver.findElement(By.name("login")).click();
+
+        // Navigate to the credit card dashboard
+        driver.findElement(By.linkText("Credit Card Dashboard")).click();
+
+        // Click on the "View Purchase Limit" button
+        driver.findElement(By.xpath("//button[@id='view-purchase-limit']")).click();
+
+        // Verify the purchase limit details are displayed
+        WebElement purchaseLimitElement = driver.findElement(By.xpath("//div[@id='purchase-limit']"));
+        Assert.assertTrue(purchaseLimitElement.isDisplayed());
+
+        // Verify the total monthly purchase limit is displayed
+        String totalMonthlyPurchaseLimit = driver.findElement(By.xpath("//span[@id='total-monthly-purchase-limit']")).getText();
+        Assert.assertNotNull(totalMonthlyPurchaseLimit);
+    }
+}
+
