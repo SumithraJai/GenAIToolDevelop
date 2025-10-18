@@ -1,0 +1,162 @@
+Homework Assignment :
+
+- Take one of your office/retail application DOM structure,convert into selenium /playwright / cypress code 
+- You are going to write prompt to convert selenium to playwright typescript	
+- Once you convert, you need to copy to this URL and run !
+https://try.playwright.tech/?l=playwright-test
+Hint: Use ICE POT framework to generate !! 
+Note: 
+- The selenium code should be working code 
+sample code available in below repository
+https://github.com/TestLeafInc/TestLeafSeleniumTraining
+
+
+Instructions: convert the given selenium code to equivalent playwright code with no extra code added
+don't hardcode the sleep or waitfortimeout - use playwright inbuilt, autowaiting mechanism
+Context: you are an AI assistant in test automation migration. your task is to accurately translate legacy selenium java scripts to modern idiomatic playwright typescript scripts
+
+Example: 
+selenium Java code:
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class GetStartedLinkTest {
+
+    private WebDriver driver;
+
+    @Before
+    public void setUp() {
+        // Set the path to your ChromeDriver if not in system path
+        // System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        driver = new ChromeDriver();
+    }
+
+    @Test
+    public void testGetStartedLink() {
+        // Navigate to the Playwright website
+        driver.get("https://playwright.dev/");
+
+        // Click the "Get started" link
+        WebElement getStartedLink = driver.findElement(By.linkText("Get started"));
+        getStartedLink.click();
+
+        // Assert that the heading "Installation" is visible
+        WebElement heading = driver.findElement(By.xpath("//h1[text()='Installation']"));
+        assertTrue(heading.isDisplayed());
+    }
+
+    @After
+    public void tearDown() {
+        // Close the browser
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
+
+Playwright code:
+import { test, expect } from '@playwright/test';
+test('get started link', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Click the get started link.
+  await page.getByRole('link', { name: 'Get started' }).click();
+
+  // Expects page to have a heading with the name of Installation.
+  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+});
+
+
+Generate playwright code for below selenium code
+package week2.day2;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class CreateContact {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver= new ChromeDriver();
+		driver.get("http://leaftaps.com/opentaps/control/login");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+		driver.findElementById("username").sendKeys("Demosalesmanager");
+		driver.findElementById("password").sendKeys("crmsfa");
+		driver.findElementByClassName("decorativeSubmit").click();
+		driver.findElementByXPath("//div[@id='label']//a[1]").click();
+		driver.findElementByXPath("//a[text()='Contacts']").click();
+		driver.findElementByXPath("//a[text()='Create Contact']").click();
+		Thread.sleep(2000);
+		driver.findElementById("firstNameField").sendKeys("Shanvi");
+		driver.findElementById("lastNameField").sendKeys("J");
+		driver.findElementById("createContactForm_firstNameLocal").sendKeys("shannu");
+		driver.findElementById("createContactForm_lastNameLocal").sendKeys("j");
+		driver.findElementById("createContactForm_departmentName").sendKeys("Automation");
+		driver.findElementById("createContactForm_description").sendKeys("abc");
+		driver.findElementById("createContactForm_primaryEmail").sendKeys("abc@gmail.com");
+		Select d=new Select(driver.findElementById("createContactForm_generalStateProvinceGeoId"));
+		d.selectByVisibleText("New York");
+		driver.findElementByClassName("smallSubmit").click();
+		Thread.sleep(2000);
+		//driver.findElementByXPath("(//input[@name='firstName'])[3]").sendKeys("Sumithra");
+	//	driver.findElementByXPath("//button[text()='Find Contacts']").click();
+		//Thread.sleep(3000);
+		//driver.findElementByXPath("//div[contains(@class,'x-grid3-cell-inner x-grid3-col-partyId')]/a").click();
+		//Thread.sleep(2000);
+		driver.findElementByXPath("//a[@class='subMenuButton'and text()='Edit']").click();
+		driver.findElementById("updateContactForm_description").clear();
+		driver.findElementById("updateContactForm_importantNote").sendKeys("Learning Appium");
+		driver.findElementByXPath("//input[@value='Update']").click();
+		Thread.sleep(1000);
+		System.out.println("Title of the page: "+driver.getTitle());		
+		driver.close();
+		driver.quit();
+	}
+}
+
+
+Output:-> Playwright code
+
+import { test, expect } from '@playwright/test';
+
+test('Create and Edit Contact', async ({ page }) => {
+  await page.goto('http://leaftaps.com/opentaps/control/login');
+
+  await page.locator('#username').fill('Demosalesmanager');
+  await page.locator('#password').fill('crmsfa');
+  await page.locator('.decorativeSubmit').click();
+
+  await page.locator('//div[@id="label"]//a[1]').click();
+  await page.locator('//a[text()="Contacts"]').click();
+  await page.locator('//a[text()="Create Contact"]').click();
+
+  await page.locator('#firstNameField').fill('Shanvi');
+  await page.locator('#lastNameField').fill('J');
+  await page.locator('#createContactForm_firstNameLocal').fill('shannu');
+  await page.locator('#createContactForm_lastNameLocal').fill('j');
+  await page.locator('#createContactForm_departmentName').fill('Automation');
+  await page.locator('#createContactForm_description').fill('abc');
+  await page.locator('#createContactForm_primaryEmail').fill('abc@gmail.com');
+  await page.locator('#createContactForm_generalStateProvinceGeoId').selectOption({ label: 'New York' });
+
+  await page.locator('.smallSubmit').click();
+
+  await page.locator('//a[@class="subMenuButton" and text()="Edit"]').click();
+  await page.locator('#updateContactForm_description').fill('');
+  await page.locator('#updateContactForm_importantNote').fill('Learning Appium');
+  await page.locator('//input[@value="Update"]').click();
+
+  console.log('Title of the page: ' + await page.title());
+});

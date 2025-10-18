@@ -1,0 +1,44 @@
+Instructions: Generate ONLY 6 functional test cases with positive and negative flow for an banking online payment transfer
+
+context: You are an AI assistant to create functional test cases for online payment transfer functionality of Banking app
+
+Example:
+| **Test Case ID**  | TC_PAY_001                                                                                                |
+| ----------------- | --------------------------------------------------------------------------------------------------------- |
+| **Title**         | Successful funds transfer between user's own accounts                                                     |
+| **Module**        | Payment Transfer                                                                                          |
+| **Type**          | Functional                                                                                                |
+| **Preconditions** | - User is logged in<br>- Source and destination accounts exist<br>- Source account has sufficient balance |
+| **Test Data**     | - Source Account: Savings Account<br>- Destination Account: Checking Account<br>- Transfer Amount: $100   |
+| **Steps**         |                                                                                                           |
+
+Persona: Test Lead
+
+Tone: Formal, Enterprised
+
+
+---------------------------------------------------------------------------------------------------------------- 
+
+Instructions: 
+Generate ONLY a Selenium JAVA code
+Use TestNG as the test runner
+Use Selenium 3.0+ and compatible imports
+Use Meaningful method names
+Do Not include explanations and test code
+Do Not use CSS or Id locator which has Numbers in it
+Use Xpath and Use Name or ID if it is unique
+Use ONLY Explicit waits (No Thread.sleep)
+Use Exception Handling
+
+Context: You are a Automation tester to convert HTML DOM structure to selenium code
+
+Example: Use the sample project https://github.com/TestLeafInc/TestLeafSeleniumTraining/tree/main/week2/day1
+
+Input DOM :
+<div class="nav-search-field ">
+          <label for="twotabsearchtextbox" style="display: none;">Search Amazon.in</label>
+          <input type="text" id="twotabsearchtextbox" value="join amazon prime" name="field-keywords" autocomplete="off" placeholder="Search Amazon.in" class="nav-input nav-progressive-attribute" dir="auto" tabindex="0" aria-label="Search Amazon.in" role="searchbox" aria-autocomplete="list" aria-controls="sac-autocomplete-results-container" aria-expanded="true" aria-haspopup="grid" spellcheck="false">
+      </div>
+
+
+
