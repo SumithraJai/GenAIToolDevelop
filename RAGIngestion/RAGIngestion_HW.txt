@@ -1,0 +1,60 @@
+**Code Review Summary**
+
+Parameter | Description | Score (out of 20)
+---------|-------------|-------------------
+Code Readability | Naming conventions are clear, but indentation and structure can be improved. Variable names like `arr` and `count` can be more descriptive. | 14
+Code Efficiency | The code has a time complexity of O(n^2) due to the nested loops, which can be optimized to O(n) using a HashSet or HashMap to store unique elements. | 12
+Error Handling | The code does not handle any exceptions, and there is no error handling mechanism in place. | 8
+Maintainability | The code is not modular, and the logic is tightly coupled. It can be improved by separating the logic into different methods or classes. | 10
+Best Practices & Standards | The code does not follow Java best practices like using meaningful variable names, comments, and proper exception handling. | 11
+
+**Overall Score: 55 / 100**
+
+**Improvement Areas:**
+
+1. **Optimize the algorithm**: Use a HashSet or HashMap to store unique elements and reduce the time complexity to O(n).
+2. **Improve variable naming**: Use more descriptive variable names like `inputArray` and `duplicateCount`.
+3. **Add comments and documentation**: Include JavaDoc comments for public methods and add comments to explain the logic.
+4. **Implement error handling**: Add try-catch blocks to handle exceptions and provide meaningful error messages.
+5. **Modularize the code**: Separate the logic into different methods or classes to improve maintainability.
+6. **Follow Java best practices**: Use proper imports, dependency management, and follow SOLID principles.
+
+**Summary:**
+The code has a simple logic but lacks efficiency, maintainability, and adherence to Java best practices. With some improvements, the code can be made more robust, efficient, and production-ready.
+
+**Example of Improved Code:**
+```java
+package week1.day2;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class PrintDuplicatesInArray {
+
+    /**
+     * Prints duplicate elements in the input array.
+     * 
+     * @param inputArray the input array
+     */
+    public static void printDuplicates(int[] inputArray) {
+        Set<Integer> uniqueElements = new HashSet<>();
+        Set<Integer> duplicateElements = new HashSet<>();
+
+        for (int element : inputArray) {
+            if (!uniqueElements.add(element)) {
+                duplicateElements.add(element);
+            }
+        }
+
+        for (Integer duplicate : duplicateElements) {
+            System.out.println("Duplicate value: " + duplicate);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] inputArray = {14, 12, 13, 11, 15, 14, 18, 16, 17, 19, 18, 17, 20, 12};
+        printDuplicates(inputArray);
+    }
+}
+```
+Note: The improved code uses a HashSet to store unique elements and a separate HashSet to store duplicate elements. The time complexity is reduced to O(n), and the code is more modular and maintainable.
