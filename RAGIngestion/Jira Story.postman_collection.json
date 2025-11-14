@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "260f7817-0972-4474-a472-90999f330b0b",
+		"name": "Jira Story",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49189705",
+		"_collection_link": "https://shaneagle21ai-1412266.postman.co/workspace/Shan's-Workspace~87ecd225-8b92-45ea-8d46-551f2e11f61e/collection/49189705-260f7817-0972-4474-a472-90999f330b0b?action=share&source=collection_link&creator=49189705"
+	},
+	"item": [
+		{
+			"name": "SearchStory Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YmFidS5tYW5pY2thbUBpbmRzYWZyaS5jb206QVRBVFQzeEZmR0YwWkpielZiWUk1UkpFS01Vb1lZb0Vra293cFl1THpVRE0tSHJoWklvTWg4d3F0R3B5ZXFwYms0NXFQUUNHVDhKVWVfZ1ZNREM3SGktYXN0ejZpRlBNMlYwMktoMGJ1RWZoYkRoa09ISWpqNmd4X3FsLUxrbThFQXg2bVQzUExab05GQVFTZndCampjOU5RdlIwVXNnMDZHRG0xV3pPWHpaZXpNSXdZOHR0eWJZPUY4MkVCNkFE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jql\": \"issuetype = Story\",\r\n    \"fields\": [\r\n        \"key\",\r\n        \"summary\",\r\n        \"description\",\r\n        \"status\",\r\n        \"reporter\",\r\n        \"priority\"\r\n       \r\n    ],\r\n    \"maxResults\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shaneagle21ai3.atlassian.net/rest/api/3/search/jql",
+					"protocol": "https",
+					"host": [
+						"shaneagle21ai3",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"search",
+						"jql"
+					]
+				},
+				"description": "Generated from cURL: curl --location \\\r\n  -u 'you@example.com:YOUR_JIRA_API_TOKEN' \\\r\n  -H 'Accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  'https://<your-domain>.atlassian.net/rest/api/3/search' \\\r\n  --data '{\r\n    \"jql\": \"issuetype = \\\"Story\\\" ORDER BY created DESC\",\r\n    \"startAt\": 0,\r\n    \"maxResults\": 50,\r\n    \"fields\": [\"key\",\"summary\",\"issuetype\",\"status\",\"assignee\",\"reporter\",\"priority\",\"created\",\"updated\",\"project\"]\r\n  }'\r\n"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "ATATT3xFfGF03iZEqXGcstN1KS-Q-aJ_hajypYYRP9Paoc9354_zuzF_2NxLFJhOdgeRcHlEOrVsgUJM2ikei3Ftz3FFaBl-n4yrI8070pHugtR00TBzfZVwCAQH8r17y_WB70_bV4rUtpRWVRHp68YlWOMDtc_18aIy4e-ByH8Bq62XMridDlU=F5A90F7F",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "shaneagle21ai3@gmail.com",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

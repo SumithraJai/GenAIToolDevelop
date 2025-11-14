@@ -1,0 +1,23 @@
+Assignment for the week
+Code Review Agent -(Mandatory)
+
+
+
+Note
+Form your own ICE POT Prompt Template
+
+
+
+Steps for Code Review Agent:
+
+1. Import code review agent file into your Langflow:
+   * Use your GitHub URL : https://github.com/username/repository/blob/main/folder/filename.js
+   * Remove the /blob segment the Git Url.
+   * Ensure the URL is formatted as:"https://raw.githubusercontent.com/username/repository/branch/filename.js"
+     
+2. Configure Groq Component:
+   * Input: Pass the file content from the GitHub URL.
+   * Prompt Template: Craft a prompt that instructs Groq to extract code snippets in languages excluding Java.
+   * Example Prompt:"Identify and extract code snippets written in languages other than Java from the provided content."
+
+3. Ensure the extracted code snippets are returned in a structured format, such as JSON or plain text, suitable for further processing or display.
